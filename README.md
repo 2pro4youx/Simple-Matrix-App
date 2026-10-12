@@ -11,9 +11,9 @@ A sleek, dark-themed desktop GUI application for evaluating and manipulating mat
 - [Features](#-features)
 - [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
-- [Usage & Input Formatting](#-usage--input-formatting)
+- [Usage & Input Formatting](#-usage--input-formatting) 
 - [The Memory System](#-the-memory-system)
-- [Operations Guide](#-operations-guide)
+- [Operations Guide](#-operations-guide) 
 
 ## ✨ Features
 

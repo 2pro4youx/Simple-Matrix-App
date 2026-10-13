@@ -86,8 +86,6 @@ Operations requiring **Matrix A** OR the **Scalar** field:
 - **Check / Make Symmetric (A):** Checks Matrix A. If not symmetric, converts it using `A @ A.T`.
 - **Gen Symmetric / Gen Skew-Sym:** Requires a single integer in the **Scalar / Size** field (e.g., entering `3` generates a 3x3 matrix). Populates the console with a randomly generated matrix of that size.
 
----
-*Built with Python, Tkinter, and NumPy.*
 ## 🚩 Update Notes
 
 - [ ] **"Remember Me" Matrix Memory:** Variables (`memory`, `s`) are finally worked upon and have reached the end of development and the application has achieved a binary memory feature.

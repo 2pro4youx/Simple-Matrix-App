@@ -1,6 +1,6 @@
 # 🌙 Nightly Matrix App (GUI Edition)
 
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![NumPy](https://img.shields.io/badge/numpy-required-orange)
 ![Tkinter](https://img.shields.io/badge/tkinter-GUI-purple)
 ![License](https://img.shields.io/badge/license-MIT-green)

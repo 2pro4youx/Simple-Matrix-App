@@ -1,6 +1,6 @@
 # Matrix Operations CLI App
 
-![Python Version](https://img.shields.io/badge/python-3.10%2B-orange)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![NumPy](https://img.shields.io/badge/numpy-required-orange)
 ![Math](https://img.shields.io/badge/math-required-orange)
 ![Tkinter](https://img.shields.io/badge/tkinter-required-orange)

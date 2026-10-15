@@ -24,7 +24,7 @@ A sleek, dark-themed desktop GUI application for evaluating and manipulating mat
 
 ## 📋 Prerequisites
 
-- **Python 3.8+**
+- **Python 3.10+**
 - **NumPy:** Used for core matrix calculations.
 - **Tkinter:** Python's standard GUI package (usually included with standard Python installations. Linux users may need to install `python3-tk` via their package manager).
 

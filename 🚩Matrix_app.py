@@ -1,5 +1,6 @@
 #Add a remember me matrix variable
 import numpy as np
+from rich import print
 import ast
 exit_var = 'yes'
 main=0
@@ -8,13 +9,17 @@ s=0
 while exit_var!="no":
     print("------------------------Matrix App--------------------------")
     try:
-        main=int(input("Enter a key - \n1 - Exit \n2 - Basic Operations (Vector/Scalar) \n3 - Advanced Operations \nKey: "))
+        main=int(input("Enter a key - \n1 - Exit \n2 - Basic Operations (Vector/Scalar) \n3 - Advanced Operations \n4 - Algebraic Operations \nKey: "))
     except:
         print("Invalid Format")
     match(main):
 ####################################################################################################################################################################
+####################################################################################################################################################################
+####################################################################################################################################################################
         case 1:
             break
+####################################################################################################################################################################
+####################################################################################################################################################################
 ####################################################################################################################################################################
         case 2:
     #matrix basic input
@@ -62,6 +67,10 @@ while exit_var!="no":
                             scalar=float(input("Enter a Scalar: "))
                             result1=matrix1*scalar
                             print("------------------------Solution----------------------------\n{}".format(result1))
+                        case _:
+                            print("-----------------------------------------------------------")
+                            print("Invalid Case")
+                            print("-----------------------------------------------------------")
                             
                 #matrix or vector
                 case 2:
@@ -106,6 +115,17 @@ while exit_var!="no":
                                 print("------------------------Solution----------------------------\n{}".format(result2))
                             else:
                                 print("The operation is not possible.")
+                        case _:
+                            print("-----------------------------------------------------------")
+                            print("Invalid Case")
+                            print("-----------------------------------------------------------")
+                case _:
+                    print("-----------------------------------------------------------")
+                    print("Invalid Case")
+                    print("-----------------------------------------------------------")
+####################################################################################################################################################################
+####################################################################################################################################################################
+####################################################################################################################################################################
         case 3:
             #singularity
             def singularity(matrix3):
@@ -202,8 +222,25 @@ while exit_var!="no":
             #Rank
             def rank(matrix3):
                 return np.linalg.matrix_rank(matrix3)
+            #Orthogonality
+            def ortho(matrix3):
+                result = np.allclose(matrix3@np.transpose(matrix3), np.eye(matrix3.shape[0]))
+                if result:
+                    return "is Orthogonal"
+                return "is not Orthogonal"
+            #Independence
+            def ind(matrix3):
+                result = np.allclose(matrix3.shape[1], rank(matrix3))
+                if result:
+                    return "is Independent"
+                return "is not Independent"
+            #Cofactor
+            def cofactor(matrix3):
+                if np.linalg.det(matrix3)==0:
+                    return "Cannot Compute cofactor matrix due to singularity"
+                return np.linalg.det(matrix3)*np.linalg.inv(matrix3)
             print("--------------------------Operation-------------------------")
-            inp5 = int(input("1 - Determinant \n2 - Singularity \n3 - Transpose \n4 - Symmetry \n5 - Inverse \n6 - Adjoint \n7 - Cofactor Matrix \n8 - Rank\nYour Operation would be: "))
+            inp5 = int(input("1 - Determinant \n2 - Singularity \n3 - Transpose \n4 - Symmetry \n5 - Inverse \n6 - Adjoint \n7 - Cofactor  \n8 - Rank\n9 - Orthogonal Checker \n10 - Independence Checker \nYour Operation would be: "))
             match(inp5):
                 case 1:
                     #############
@@ -369,6 +406,10 @@ while exit_var!="no":
                             symmetery(generated_matrix)
                             determinant(generated_matrix)
                             print("------------------------------------------------------------")
+                        case _:
+                            print("-----------------------------------------------------------")
+                            print("Invalid Case")
+                            print("-----------------------------------------------------------")
                     
                 case 5:
                     #############
@@ -452,7 +493,7 @@ while exit_var!="no":
                         return None
                     matrix3=matrix3() #placeholder for matrix3
                     #############                    
-                    cofactor_matrix=np.transpose(inverse(matrix3))*determinant(matrix3)
+                    cofactor_matrix=np.transpose(np.linalg.inv(matrix3))*np.linalg.det(matrix3)
                     if cofactor_matrix is None:
                         print("The matrix is singular, therefore it is not invertible")
                     else:
@@ -490,5 +531,156 @@ while exit_var!="no":
                     symmetery(matrix3)
                     determinant(matrix3)
                     print("-----------------------------------------------------------")
-            exit_var=input("Do you want to stay? (yes/no): ")
+                    
+                case 9:
+                    inp4 = int(input(""))
+                    #############
+                    def matrix3():
+                        print("----------------------Enter a Matrix-----------------------")
+                        print("Examples (3*3): [[1,2,3],[2,3,4],[3,4,5]]")
+                        print("Examples (1*3): [[1,2,3]]")
+                        inp=input("\nEnter a matrix: ")
+                        try:    
+                            array=ast.literal_eval(inp) #convert input into a array that python could understand
+                            matrix3=np.array(array)
+                            print("----------------------Current Matrix-----------------------")
+                            print("Your matrix is:")
+                            print(matrix3)
+                            print(f'Shape of matrix is {matrix3.shape} and Dimension of matrix is {matrix3.ndim}')
+                            print("-------------------Orthogonal Checker---------------------")
+                            return matrix3
+                        except(ValueError, SyntaxError):
+                            print("Enter a valid format")
+                        return None
+                    matrix3=matrix3()
+                    ############
+                    print("The given matrix", ortho(matrix3))
+                    print("\nExtras: ")
+                    singularity(matrix3)                            
+                    symmetery(matrix3)
+                    determinant(matrix3)
+                    print("-----------------------------------------------------------")
+                    
+                case 10:
+                    #############
+                    def matrix3():
+                        print("----------------------Enter a Matrix-----------------------")
+                        print("Examples (3*3): [[1,2,3],[2,3,4],[3,4,5]]")
+                        print("Examples (1*3): [[1,2,3]]")
+                        inp=input("\nEnter a matrix: ")
+                        try:    
+                            array=ast.literal_eval(inp) #convert input into a array that python could understand
+                            matrix3=np.array(array)
+                            print("----------------------Current Matrix-----------------------")
+                            print("Your matrix is:")
+                            print(matrix3)
+                            print(f'Shape of matrix is {matrix3.shape} and Dimension of matrix is {matrix3.ndim}')
+                            print("-------------------Independence Checker--------------------")
+                            return matrix3
+                        except(ValueError, SyntaxError):
+                            print("Enter a valid format")
+                        return None
+                    matrix3=matrix3()
+                    ############
+                    print("The given matrix", ind(matrix3))
+                    print("\nExtras: ")
+                    singularity(matrix3)                            
+                    symmetery(matrix3)
+                    determinant(matrix3)
+                    print("-----------------------------------------------------------")
+                
+                case _:
+                    print("-----------------------------------------------------------")
+                    print("Invalid Case")
+                    print("-----------------------------------------------------------")
+####################################################################################################################################################################
+####################################################################################################################################################################
+####################################################################################################################################################################
+        case 4:
+            #Linear Presenter
+            def linp(A,B):
+                global var
+                var = [chr(x) for x in range(97,123)]
+                rows, columns = A.shape
+                
+                if B.shape[0] != rows:
+                    print("Error: Number of rows in B must be equal to the number of rows in A")
+                    return
+                
+                for i in range(rows):
+                    eq=[]
+                    for j in range(columns):
+                        val = A[i,j]
+                        
+                        #Determining Sign
+                        if len(eq)==0:
+                            sign = '-' if val <0 else ''
+                        else:
+                            sign = ' - ' if val <0 else ' + '
+                            
+                        #Determining Coefficient 
+                        abs_val = abs(val)
+                        
+                        if abs_val == 1:
+                            coef = ""
+                        else:
+                            coef = str(int(abs_val) if abs_val.is_integer() else abs_val)
+                        
+                        #Final Term
+                        term = f"{sign}{coef}{var[j]}"
+                        eq.append(term)
+                        
+                    #Final Call
+                    lhs = "".join(eq) if eq else "0"
+                    rhs = B[i] if B.ndim == 1 else B[i,0]
+                    print(f"{lhs} = {rhs}")
+                            
+            print("-----------------------------------------------------------")
+            inp5 = int(input("1 - Linear Function \n2 - Quadratic Function\n3 - Cubic Function\nDesired Operation: "))
+            match inp5: 
+                case 1:
+                    print("[bold red]-----------------------------------------------------------[/bold red]")
+                    print("[bold red]This only works for square coefficient matrices, \ni.e. the number equations shall be equal to number of variables[/bold red]")
+                    print("[bold red]-----------------------------------------------------------[/bold red]")
+                    def matrix4():
+                        print("------------------Enter Coefficient Matrix-----------------")
+                        print("Examples (3*3): [[1,2,3],[2,3,4],[3,4,5]]")
+                        inpA=input("\nEnter a matrix: ")
+                        print("-------------------Enter Constant Matrix-------------------")
+                        print("Examples (3*1): [[1],[2],[3]]")
+                        inpB=input("\nEnter a matrix: ")
+                        try:    
+                            arrayA=ast.literal_eval(inpA) #convert input into a array that python could understand
+                            matrixA=np.array(arrayA)
+                            
+                            arrayB=ast.literal_eval(inpB) #convert input into a array that python could understand
+                            matrixB=np.array(arrayB)
+                            
+                            print("---------------------Current Equation----------------------")
+                            print("Equations formed are:")
+                            linp(matrixA, matrixB)
+                            print("---------------------Linear Solution-----------------------")
+                            return matrixA, matrixB
+                        except(ValueError, SyntaxError):
+                            print("Enter a valid format")
+                        return None
+                    matrixA, matrixB = matrix4()
+                    solution = np.linalg.solve(matrixA, matrixB)
+                    for i, v in enumerate(solution):
+                        print(f"{var[i]} = {v} ")
+                    print("-----------------------------------------------------------")
+                
+                case 2:
+                    print("Under Development")
+                case 3:
+                    print("Under Development")
+####################################################################################################################################################################
+####################################################################################################################################################################
+####################################################################################################################################################################
+
+        case _:
+            print("-----------------------------------------------------------")
+            print("Invalid Case")
+            print("-----------------------------------------------------------")
+    exit_var=input("Do you want to stay? (yes/no): ")
 print("Halt.")

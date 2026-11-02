@@ -8,6 +8,9 @@
 
 A feature-rich, command-line Python application for evaluating and manipulating mathematical matrices. Built with NumPy, this tool allows users to input matrices on the fly and perform everything from basic arithmetic to advanced linear algebra calculations.
 
+### 📑 Note
+This particular project has version control, hence you can check out different versions and source codes through the different branches created and the different releases pushed
+
 ## 📑 Table of Contents
 - [Features](#-features)
 - [Prerequisites](#-prerequisites)
